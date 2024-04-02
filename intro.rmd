@@ -1,0 +1,113 @@
+## Création du corpus
+
+Pour notre étude, nous nous appuierons sur un corpus de 161 documents constitué grâce à l'outil Gallicagram. Ces documents sont tous un numéro du *Journal des débats* faisant référence au moins une fois au terme "Charlemagne" et datant d'entre **1815** et **1870**.
+*
+# Chargement des fonctions nécessaires créées au préalable
+
+```{r}
+source(file = "fonctions_texto.r")
+```
+
+# Chargement des paquets
+
+```{r}
+# install.packages("readtext")
+# install.packages("quanteda")
+
+library(readtext)
+library(quanteda)
+```
+
+```{r}
+csvf <- "charlemagne_debats_1815-1870.csv"
+textes <- readtext(csvf, text_field = "text", docid_field = "id")
+debats <- corpus(textes)
+```
+
+
+#Taille initiale du corpus
+
+```{r}
+occurrences <- tokens(debats)
+corpus_size(occurrences)
+print("Ci-dessous le nombre d'occurences et de formes sans la ponctuation")
+occurrences <- tokens(debats, remove_punct = T, remove_symbols = T, remove_numbers = T)
+corpus_size(occurrences)
+```
+Le corpus contient donc un total de **29981** formes différentes pour **182042** occurences (en excluant la ponctuation). 
+
+
+
+## Filtrage du corpus
+
+La première étape a été de filtrer le corpus en excluant notamment les *mots outils* ou *stop words*:
+```{r}
+stopwords_fr <- read.csv("stopwords_fr.csv",  encoding="utf-8")
+toks_nostop <- tokens_remove(occurrences, stopwords_fr$fg, padding = FALSE)
+corpus_size(toks_nostop)
+```
+
+Une fois le filtrage effectué, le corpus contient désormais **29092** formes pour **88584** occurences. 
+A partir des mots restants, on constitue un tableau document/terme ou DFM (*document-feature matrix*):
+```{r}
+debats_dfm <- dfm(toks_nostop)
+nfeat(debats_dfm)
+```
+Cela nous permet de faire une visualisation statistique du tableau:
+```{r}
+featfreq(debats_dfm)
+```
+```{r}
+summary(featfreq(debats_dfm))
+```
+On constate une part très importante d'hapax (termes n'apparaissant qu'une seule fois), la médiane étant égale à 1. 
+Ensuite, on filtre donc le tableau en ne conservant uniquement que les 300 mots avec la fréquence la plus élevée afin d'exclure les hapax et les mots qui n'apparaissent que très peu et qui ne sont donc pas assez représentatifs ou utiles pour l'étude. 
+
+```{r}
+top300 <- names(topfeatures(debats_dfm, n = 300))
+debats_dfm_300 <- dfm_select(debats_dfm, pattern = top300, selection = "keep")
+nfeat(debats_dfm_300)
+```
+
+
+## Découpage du corpus
+
+Le filtrage effectué, on découpe ensuite le corpus par année:
+
+```{r}
+group_sizes(debats_dfm_300, "annee")
+groups <- group_sizes(debats_dfm_300, "annee")
+
+plot_group_sizes(groups = groups, part = "Année")
+```
+
+Cela nous permet donc de visualiser le nombre d'occurences pour chaque mot par année. A l'aide d'un graphique, on constate un nombre d'occurences qui varie énormément en fonction des années, très élevé pour 1855 par exemple avec environ 1000 occurences et très faible pour 1818 avec seulement 50 occurences environ. De manière générale, les 300 termes les plus fréquents se retrouvent plus dans les journaux de la fin de la période considérée. 
+On peut également savoir quels sont les mots les plus fréquents. On sait par exemple, de manière peu surprenante, que le mot le plus fréquent est Charlemagne. 
+On transforme ensuire la DFM en table lexicale :
+```{r}
+dfm_a <- dfm_group(debats_dfm_300, groups = annee)
+tle <- dfm_to_tle(dfm_a)
+```
+Puis, on l'exporte en format .csv afin de faire une analyse factorielle des correspondances (AFC):
+```{r}
+write.csv(tle, "table_lexicale_300.csv", row.names = TRUE)
+```
+
+
+
+##Analyse factorielle de correspondances (AFC)
+
+Après une première AFC sur les deux premiers facteurs, on constate un *effet comète* important (Phlippe Cibois, https://books.openedition.org/enseditions/1462). Pour pallier cet effet, on exclue l'année 1829, très écartée des autres:
+
+```{r}
+dfm_removed <- dfm_subset(debats_dfm_300, annee != "1829")
+dfm_a <- dfm_group(dfm_removed, groups = annee)
+tle <- dfm_to_tle(dfm_a)
+write.csv(tle, "table_lexicale_300_sans_1829.csv", row.names = TRUE)
+```
+
+Ensuite, on exclue également trois autres modalités directement depuis le logiciel de visualisation (http://analyse.univ-paris1.fr/) qu'on passe alors en modalités supplémentaires (n'influent plus sur les résultats de l'AFC): *vol*, *édition* et *net* responsables de cet *effet comète*. 
+
+L'AFC étant illisible à cause de la quantité de mots présents sur le graphique, on seuille les modalités selon les contributions sur les facteurs. Ne sont alors affichées que les modalités supérieures ou égales aux contributions moyennes (1,82 en colonne et 0,33 en ligne). 
+
+
