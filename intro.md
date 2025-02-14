@@ -92,6 +92,9 @@ Ici, si on soumet à la machine le ruban 1 1 1 _ _ _ _, le ruban en sorti sera 0
 
 Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). 
 
+<img src="machine_de_turing.jpg" alt="alt text"> 
+*Exemple de machine de Turing, source: Alan Turing et le décryptage des codes secrets nazis, CNRS Le Journal*
+
 ## Algorithmes efficaces, algorithme inefficaces
 
 La première référence à l'efficacité des algorithmes remonte à 1956 lorsque le mathématicien autrichien Kurt Gödel écrit à son homologue hongrois von Neumann pour lui demander s'il existe un algorithme quadratique, c'est-à-dire un algorithme dont le nombre d’opérations est proportionnel à *n*² où *n* est la taille des données d'entrée, pour le problème SAT (Satisfiabilité Booléenne) qui consiste à déterminer si une formule booléenne peut être évaluée à vrai en attribuant des valeurs de vérité (true/false) aux variables [^3]. 
