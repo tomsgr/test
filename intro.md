@@ -90,7 +90,7 @@ Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici n
 
 Ici, si on soumet à la machine le ruban 1 1 1 _ _ _ _, le ruban en sorti sera 0 0 0 _.
 
-Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). 
+Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). C'est donc cette mesure de complexité temporelle que nous utilisons dans l'exemple de la section précédente (code Python).
 
 <img src="machine_de_turing.jpg" alt="alt text"> 
 
