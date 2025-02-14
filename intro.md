@@ -93,6 +93,7 @@ Ici, si on soumet à la machine le ruban 1 1 1 _ _ _ _, le ruban en sorti sera 0
 Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). 
 
 <img src="machine_de_turing.jpg" alt="alt text"> 
+
 *Exemple de machine de Turing, source: Alan Turing et le décryptage des codes secrets nazis, CNRS Le Journal*
 
 ## Algorithmes efficaces, algorithme inefficaces
