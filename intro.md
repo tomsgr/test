@@ -9,13 +9,13 @@
 
 Bien que cette équation encore non résolue puisse sembler simple au premier coup d'oeil pour un esprit qui ne serait pas familier à l'algorithmique, elle est en fait l'un des "problèmes du millénaire", l'un des sept problèmes mathématiques dits insurmontables et posés en 2000 par l'Institut de mathématiques Clay aux Etats-Unis. Malgré un titre à l'air de défi impossible et une récompense d'un million de dollar fournie par l'Institut pour quiconque résolverait un de ces dits problèmes, le mathématicien britannique Keith Devlin considère le problème **P = NP** ? comme le seul problème compréhensible par tous. Loin d'avoir la prétention de pouvoir faire gagner la récompense suite à le lecture de cet article, ce dernier permettra de mieux aborder la question plus globale de la complexité des algorithmes afin de compendre notamment pourquoi **P = NP?** sera certainement encore un problème du prochain millénaire.
 
-Pour commencer, nous définirons un algorithme comme *"un ensemble de règles permettant de résoudre un problème sur des données d'entrées. Cet ensemble de règles définit une séquence d'opérations qui se termine en un temps fini. Cependant, pour un problème donné il peut exister plusieurs algorithmes possibles"* [¹]. La théorie de la complexité découle alors d'un problème très terre à terre. En effet, dans les années 1960, les premiers gros ordinateurs se diffusent mais ces derniers, comparés aux machines dont nous disposons aujourd'hui, sont très lents et disposent de très peu de mémoire vive. Très vite, les chercheurs se posent donc la question de la complexité des algorithmes: en combien de temps un algorithme peut-il s'exécuter sur une machine donnée ? Surtout, un algorithme peut-il simplement tourner sur cette machine ? Finalement, quel algorithme choisir, lequel sera le plus optimisé ?
+Pour commencer, nous définirons un algorithme comme *"un ensemble de règles permettant de résoudre un problème sur des données d'entrées. Cet ensemble de règles définit une séquence d'opérations qui se termine en un temps fini. Cependant, pour un problème donné il peut exister plusieurs algorithmes possibles"* [^1]. La théorie de la complexité découle alors d'un problème très terre à terre. En effet, dans les années 1960, les premiers gros ordinateurs se diffusent mais ces derniers, comparés aux machines dont nous disposons aujourd'hui, sont très lents et disposent de très peu de mémoire vive. Très vite, les chercheurs se posent donc la question de la complexité des algorithmes: en combien de temps un algorithme peut-il s'exécuter sur une machine donnée ? Surtout, un algorithme peut-il simplement tourner sur cette machine ? Finalement, quel algorithme choisir, lequel sera le plus optimisé ?
 Ces questions donnent donc lieu à l'identification de deux types de complexité:
 
   - **complexité temporelle**: c'est la mesure du temps d'exécution d'un algorithme en fonction de la taille de l'entrée
   - **complexité spatiale**: c'est la mesure de la mémoire nécessaire à l'exécution d'un algorithme
  
-En somme,  étudier la complexité d'un algorithme c'est calculer combien de temps il va prendre pour s'exécuter en fonction d'une donnée de taille *n* en entrée. De plus, ici nous ne nous intéresserons pas à la complexité spatiale mais bien à la complexité temporelle car bien que nos ordinateurs n'aient pas de mémoire infinie, nous nous basrons sur le modèle de la machine de Turing (qui elle possède une mémoire infinie par définition) que nous détaillerons ensuite. En pratique, la mémoire d'un ordinateur, par sa taille, peut aujourd'hui être considérée comme infinie. De plus, nous pouvons la considérer comme infinie de manière théorique car elle est extensible par l'ajout de composants[²]. 
+En somme,  étudier la complexité d'un algorithme c'est calculer combien de temps il va prendre pour s'exécuter en fonction d'une donnée de taille *n* en entrée. De plus, ici nous ne nous intéresserons pas à la complexité spatiale mais bien à la complexité temporelle car bien que nos ordinateurs n'aient pas de mémoire infinie, nous nous basrons sur le modèle de la machine de Turing (qui elle possède une mémoire infinie par définition) que nous détaillerons ensuite. En pratique, la mémoire d'un ordinateur, par sa taille, peut aujourd'hui être considérée comme infinie. De plus, nous pouvons la considérer comme infinie de manière théorique car elle est extensible par l'ajout de composants[^2]. 
 
 Afin de mieux saisir ce que représente la complexité d'un algorithme dans la pratique, prenons en exemple le code suivant:
 ```python
@@ -79,7 +79,7 @@ Bien qu'il existe plusieurs méthodes de calcul, nous nous basons ici sur celui 
 ## Algorithmes efficaces, algorithme inefficaces
 
 La première référence à l'efficacité des algorithmes remonte à 1956 lorsque le mathématicien autrichien Kurt Gödel écrit à son homologue hongrois von Neumann pour lui demander s'il existe un algorithme quadratique, c'est-à-dire un algorithme dont le nombre d’opérations est proportionnel à *n*² où *n* est la taille des données d'entrée, pour le problème SAT (Satisfiabilité Booléenne) qui consiste à déterminer si une formule booléenne peut être évaluée à vrai en attribuant des valeurs de vérité (true/false) aux variables [^3]. 
-Par la suite, c'est la définition de Cobham[^4] ainsi que celle d'Edmonds[^5] qui s'imposent comme universelles: un algorithme efficace fonctionne en temps polynomial, soit si le nombre d'opérations qu'il effectue est borné par une fonction de la forme :
+Par la suite, c'est la définition de Cobham [^4] ainsi que celle d'Edmonds [^5] qui s'imposent comme universelles: un algorithme efficace fonctionne en temps polynomial, soit si le nombre d'opérations qu'il effectue est borné par une fonction de la forme :
 *O($n^k$)* où : 
 - *n* est la taille de l'entrée
 - *k* est une constante
@@ -116,9 +116,9 @@ Olivier Carton, Langages formels, calculabilité et complexité, 2008
 
 Complexity Zoo: https://complexityzoo.net/ 
 
-[¹]: Courrier, N. (2021), *Complexité temporelle des algorithmes* \[Cours Magistral], Classe Préparatoire aux Grandes Ecoles PTSI Lycée Chaptal
+[^1]: Courrier, N. (2021), *Complexité temporelle des algorithmes* \[Cours Magistral], Classe Préparatoire aux Grandes Ecoles PTSI Lycée Chaptal
 
-[²]: voir Sylvain Perifel, "La Machine de Turing", dans *Complexité algorithmique*, Ellipses, 2014, p.7
+[^2]: voir Sylvain Perifel, "La Machine de Turing", dans *Complexité algorithmique*, Ellipses, 2014, p.7
 
 [^3]: voir la lettre de Gödel à Von Neumann en 1956 dans [« Gödel’s Lost Letter and P=NP : a personal view of the theory of computation»](https://rjlipton.com/the-gdel-letter/), sur la page de Richard J. Lipton.
 
