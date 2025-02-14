@@ -48,17 +48,17 @@ def diviseurs(n:int):
                 liste_diviseurs.append(n//i)
     return liste_diviseurs
 ```
-Ici, cet algorithme s'appuie sur le fait que si p est un diviseur de n alors on peut écrire n=p\*q, avec p>=racine(n),  alors q est un diviseur de n inférieur ou égal à racine(n). Pour les esprits moins scientifiques, pour résumer le programme suivant, nous pouvons dire qu'il cherche tous les diviseurs inférieurs ou égal à racine(n) puisqu'une propriété mathématique nous dit que n peut s'écrire sous la forme p\*q (p et q entiers naturels) avec p forcément inférieur ou égal à la racine de n. L'algorithme cherche donc d'abord à trouver tous ces p. Ensuite, il ajoute tous les q. Pour cet algorithme, on fait donc les opérations suivantes:
+Ici, cet algorithme s'appuie sur le fait que si p est un diviseur de n alors on peut écrire n=p×q, avec p>=√n,  alors q est un diviseur de n inférieur ou égal à √n. Pour les esprits moins scientifiques, pour résumer le programme suivant, nous pouvons dire qu'il cherche tous les diviseurs inférieurs ou égal à √n puisqu'une propriété mathématique nous dit que n peut s'écrire sous la forme p\*q (p et q entiers naturels) avec p forcément inférieur ou égal à la racine de n. L'algorithme cherche donc d'abord à trouver tous ces p. Ensuite, il ajoute tous les q. Pour cet algorithme, on fait donc les opérations suivantes:
 
 - une affectation : liste_diviseurs= [ ]
 - un calcul de racine carrée: math.sqrt(n)
-- racine(n) calculs de reste: n%i
-- racine(n) comparaisons: n%i==0
-- Entre 1 et racine(n) calculs de quotient: n//i
-- Entre 1 et racine (n) comparaisons: n//i !=i
-- x opérations d'ajouts à la liste liste_diviseurs. x est au moins égal à 1 et au plus à 2*racine(n).
+- √n calculs de reste: n%i
+- √n comparaisons: n%i==0
+- Entre 1 et √n calculs de quotient: n//i
+- Entre 1 et √n comparaisons: n//i !=i
+- x opérations d'ajouts à la liste liste_diviseurs. x est au moins égal à 1 et au plus à 2×√n.×
 
-Le nombre d'opérations pour cet algorithme varie donc entre 2\*racine(n)+5 et 6*racine(n)+2. Le nombre d'opérations est donc proportionnel à racine(n). 
+Le nombre d'opérations pour cet algorithme varie donc entre 2×√n+5 et 6×√n+2. Le nombre d'opérations est donc proportionnel à √n. 
 
 On voit donc à travers l'exemple de ces deux algorithmes que le nombre d'opérations peut varier fortement pour obtenir le même résultat en sortie, on a donc bien des différences en terme de complexité. Par exemple ici pour n=100 le nombre d'opérations avec le premier algorithme varie entre 202 et 301 et entre 25 et 62 pour le deuxième. 
 
@@ -73,14 +73,23 @@ Toutefois, certains problèmes de recherche de solution peuvent être transform�
 
 ## Modèle de calcul utilisé
 
-Bien qu'il existe plusieurs méthodes de calcul, nous nous basons ici sur celui de la machine de Turing. Ce modèle de machine est un modèle théorique défini par Alain Turing en 1936 afin de formaliser
+Bien qu'il existe plusieurs méthodes de calcul, nous nous basons ici sur celui de la machine de Turing. Ce modèle de machine est un modèle théorique défini par Alain Turing en 1936 afin de formaliser la notion de calculabilité et d'algorithme. Pour résumer, la machine de Turing est composée de trois éléments:
 
+- un ruban infini (mémoire de la machine)
+- une tête de lecture et d'écriture (qui lit et écrit sur le ruban)
+- un tableau de règles
 
+Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici nous prendrons pour exemple les symboles 0, 1 ou un espace symbolisé par "_". La tête de lecture et d'écriture se déplace de case en case et peut lire les symboles associés ainsi qu'écrire un nouveau symbole. Elle possède également un état qui peut changer en fonction du tableau de règles. C'est ce tableau qui indique à la machine son état actuel, quel symbole est lu, quel symbole écrire ensuite, où se déplacer et quel état adopter. On peut modéliser cela dans le tableau suivant: 
+
+|Etat          | Symbole lu   |Ecrit         |Deplace       | Nouvel Etat  |
+|:------------:|:------------:|:------------:|:------------:|:------------:|
+|A |1|0|droite|A|
+|A|_|_|Stop|HALT|
 ## Algorithmes efficaces, algorithme inefficaces
 
 La première référence à l'efficacité des algorithmes remonte à 1956 lorsque le mathématicien autrichien Kurt Gödel écrit à son homologue hongrois von Neumann pour lui demander s'il existe un algorithme quadratique, c'est-à-dire un algorithme dont le nombre d’opérations est proportionnel à *n*² où *n* est la taille des données d'entrée, pour le problème SAT (Satisfiabilité Booléenne) qui consiste à déterminer si une formule booléenne peut être évaluée à vrai en attribuant des valeurs de vérité (true/false) aux variables [^3]. 
 Par la suite, c'est la définition de Cobham [^4] ainsi que celle d'Edmonds [^5] qui s'imposent comme universelles: un algorithme efficace fonctionne en temps polynomial, soit si le nombre d'opérations qu'il effectue est borné par une fonction de la forme :
-*O($n^k$)* où : 
+*O(n<sup>k</sup>)* où : 
 - *n* est la taille de l'entrée
 - *k* est une constante
 
@@ -90,9 +99,9 @@ Ainsi, un algorithme est dit efficace si le nombre d'opération effectué est de
 |*O*(1)      |Temps constant| 1 ns                                | Le temps d'exécution ne dépend pas des données traitées.|
 |*O*(log *n*)|logarithmique | 10 ns                               |En pratique, cela correspond à une exécution quasi instantanée.|
 |*O(n)*      |linéaire      | 1 ms                                |Le temps d'exécution d'un tel algorithme ne devient supérieur à une minute que pour des données de taille comparable à celle des mémoires vives disponibles actuellement. Le problème de la gestion de la mémoire se posera donc avant celui de l'efficacité en temps.|
-|*O*(*n*²)   |quadratique   |15 mn                                |Cette complexité reste acceptable pour des données de taille moyenne (*n*<$10^6$) mais pas au-delà avec la plupart des processeurs actuels.|
-|*O*(*$n^k$*)|polynômiale   | 30 ans pour *k* = 3                 |Ici *n$^k$* est le terme de plus haut degré d'un polynôme en n.|
-|*O*(*$2^n$*)|exponentielle | plus de 10³⁰⁰ ⁰⁰⁰ milliards d'années|Un algorithme d'une telle complexité est impraticable sauf pour de très petites données (*n*<50). Algorithme inefficace.|
+|*O*(*n*²)   |quadratique   |15 mn                                |Cette complexité reste acceptable pour des données de taille moyenne (*n*<10⁶) mais pas au-delà avec la plupart des processeurs actuels.|
+|*O*(*n<sup>k</sup>*)|polynômiale   | 30 ans pour *k* = 3                 |Ici *n<sup>k</sup>* est le terme de plus haut degré d'un polynôme en n.|
+|*O*(*2<sup>n</sup>*)|exponentielle | plus de 10³⁰⁰ ⁰⁰⁰ milliards d'années|Un algorithme d'une telle complexité est impraticable sauf pour de très petites données (*n*<50). Algorithme inefficace.|
 
 Table - *Ordre de grandeur des temps d'exécution d'un problème de taille 10⁶ sur un ordinateur à un milliard d'opérations par seconde*
 
@@ -122,6 +131,6 @@ Complexity Zoo: https://complexityzoo.net/
 
 [^3]: voir la lettre de Gödel à Von Neumann en 1956 dans [« Gödel’s Lost Letter and P=NP : a personal view of the theory of computation»](https://rjlipton.com/the-gdel-letter/), sur la page de Richard J. Lipton.
 
-[^4] : Alan Cobham. « The Intrinsic Computational Difficulty of Functions ». In: *Logic, Methodology and Philosophy of Science, proceedings of the second International Congress, held in Jerusalem*, 1964.
+[^4]: Alan Cobham. « The Intrinsic Computational Difficulty of Functions ». In: *Logic, Methodology and Philosophy of Science, proceedings of the second International Congress, held in Jerusalem*, 1964.
 
-[^5] : Jack Edmonds. « Paths, Trees, and Flowers ». In:  *Canad. J. Math* 17 (1965),p. 449–467
+[^5]: Jack Edmonds. « Paths, Trees, and Flowers ». In:  *Canad. J. Math* 17 (1965),p. 449–467
