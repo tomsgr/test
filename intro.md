@@ -85,6 +85,7 @@ Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici n
 |:------------:|:------------:|:------------:|:------------:|:------------:|
 |A |1|0|droite|A|
 |A|_|_|Stop|HALT|
+
 *Exemple de tableau des transitions*
 
 Ici, si on soumet à la machine le ruban 1 1 1 _ _ _ _, le ruban en sorti sera 0 0 0 _.
