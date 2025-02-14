@@ -79,12 +79,18 @@ Bien qu'il existe plusieurs méthodes de calcul, nous nous basons ici sur celui 
 - une tête de lecture et d'écriture (qui lit et écrit sur le ruban)
 - un tableau de règles
 
-Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici nous prendrons pour exemple les symboles 0, 1 ou un espace symbolisé par "_". La tête de lecture et d'écriture se déplace de case en case et peut lire les symboles associés ainsi qu'écrire un nouveau symbole. Elle possède également un état qui peut changer en fonction du tableau de règles. C'est ce tableau qui indique à la machine son état actuel, quel symbole est lu, quel symbole écrire ensuite, où se déplacer et quel état adopter. On peut modéliser cela dans le tableau suivant: 
+Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici nous prendrons pour exemple les symboles 0, 1 ou un espace symbolisé par "_". La tête de lecture et d'écriture se déplace de case en case et peut lire les symboles associés ainsi qu'écrire un nouveau symbole. Elle possède également un état qui peut changer en fonction du tableau de règles. C'est ce tableau qui indique à la machine son état actuel, quel symbole est lu, quel symbole écrire ensuite, où se déplacer et quel état adopter. On peut modéliser cela par un exemple dans le tableau suivant: 
 
 |Etat          | Symbole lu   |Ecrit         |Deplace       | Nouvel Etat  |
 |:------------:|:------------:|:------------:|:------------:|:------------:|
 |A |1|0|droite|A|
 |A|_|_|Stop|HALT|
+*Exemple de tableau des transitions*
+
+Ici, si on soumet à la machine le ruban 1 1 1 _ _ _ _, le ruban en sorti sera 0 0 0 _.
+
+Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). 
+
 ## Algorithmes efficaces, algorithme inefficaces
 
 La première référence à l'efficacité des algorithmes remonte à 1956 lorsque le mathématicien autrichien Kurt Gödel écrit à son homologue hongrois von Neumann pour lui demander s'il existe un algorithme quadratique, c'est-à-dire un algorithme dont le nombre d’opérations est proportionnel à *n*² où *n* est la taille des données d'entrée, pour le problème SAT (Satisfiabilité Booléenne) qui consiste à déterminer si une formule booléenne peut être évaluée à vrai en attribuant des valeurs de vérité (true/false) aux variables [^3]. 
