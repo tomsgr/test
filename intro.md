@@ -142,7 +142,16 @@ C'est pourquoi la question **P = NP** revient à se demander si tous les problè
 Si P=NP cela signifierait également par extension que toute Machine de Turing non déterministe pourrait être simulée efficacement par une Machine de Turing déterministe en ce qui concerne les algorithmes résolus en temps polynomial. 
 Enfin, les deux dernières classes de complexités concernent les algorithmes inefficaces vus dans le tableau précédent, ceux résolus en temps exponentiel (*O(2<sup>n</sup>)*). Contrairement à NP, où une solution peut être vérifiée rapidement, la classe EXPTIME contient des problèmes tellement complexes que même leur vérification nécessite un temps exponentiel. Par exemple, certains jeux à deux joueurs, comme le jeu de Hex [^6], appartiennent à EXPTIME car leur analyse complète demande d’explorer un très grand nombre de configurations possibles.
 
-Alors **P=NP** reste pour l'instant le problème du millénaire. Si ce dernier venaità être résolu, l'impact dans nombre de domaines serait énorme. Par exemple, les avancées en cryptographies seraient telles que les systèmes de sécurité actuels deviendraient obsolètes puisque ces derniers reposent sur la difficulté à facotriser un grand nombre en produits de facteurs premiers. 
+## P = NP?
+
+Nous l'avons vu, la question **P = NP** revient à se demander si tous les problèmes dont la solution peut être vérifiée en temps polynomial peuvent aussi être résolus en temps polynomial. Or, nous possédons un exemple de ce type pour illustrer la question. Il s'agit du problème de primalité qui consiste à se poser la question suivante: n est-il un nombre premier ?
+Or, avant 2002, l'algorithme le plus performant pour répondre à cette question était en NP. Depuis cette date, trois chercheurs indiens, Manindra Agrawal, Neeraj Kayal et Nitin Saxena ont permis de découvrir un algorithme (appelé AKS) en P (2<sup>12</sup> puis amélioré jusqu'à une complexité de 2<sup>6</sup>) pour y répondre. 
+La question est donc de savoir si pour tous les algorithmes en NP, nous pouvons trouver un algorithme équivalent en P. Or, pour savoir si P=NP, il suffit de prouver que P n'est pas égal à NP pour un seul algorithme. Cela revient à trouver une borne inférieure (temps minimal pour un algorithme) qui soit forcément dans NP pour un seul algorithme. A ce jour, personne n'a réussi. 
+
+Nous pouvons alors prendre le problème dans l'autre sens et tenter de prouver que pour tout problème NP, il existe un problème P équivalent. Toutefois, il existe une infinité de problème NP. C'est pourquoi, afin de prouver que P=NP, nous pouvons tenter uiquement de prouver que le problème SAT que nous avons évoqué plus haut peut être résolu en temps polynomial. En effet, tout problème NP, selon le théorème de Cook-Levin[^7], peut être transformé en problème SAT, on dit que SAT est NP-complet. Finalement, résoudre un problème NP-complet en temps polynomial permettrait donc de prouver que P=NP.
+
+Alors **P=NP** reste pour l'instant le problème du millénaire. Si ce dernier venaità être résolu, l'impact dans nombre de domaines serait énorme. Par exemple, les avancées en cryptographies seraient telles que les systèmes de sécurité actuels deviendraient obsolètes puisque ces derniers reposent sur la difficulté à facotriser un grand nombre en produits de facteurs premiers (technique appelée chiffrement RSA). En effet, il est très simple de vérifier qu'un nombre est décomposé en produits de facteurs premiers, même s'il est très grand, puiqu'il suffit de faire l'opération. Toutefois, trouver ces facteurs peut s'avérer très difficile.
+
 
 ## Bibliographie : 
 
@@ -170,3 +179,5 @@ Complexity Zoo: https://complexityzoo.net/
 [^5]: Jack Edmonds. « Paths, Trees, and Flowers ». In:  *Canad. J. Math* 17 (1965),p. 449–467
 
 [^6]: L'article Wikipédia sur le jeu de Hex, fournit les informations nécessaires à sa compréhension https://fr.wikipedia.org/wiki/Hex
+
+[^7]: Théorème formulé par le mathématicien américain Stephen Cook et au même moment par le mathématicien russe Leonid Levin
