@@ -133,8 +133,15 @@ On comprend donc grâce au tableau qu'un algorithme efficace ne peut être que d
 
 ## Classes de complexité
 
-Nous l'avons vu, un algorithme efficace se résout en temps polynomial. Mais il existe d'autres ordres de grandeurs qu'on appelle alors classes de complexité en temps (il en existe aussi pour la mémoire). Elles peuvent être regroupées dans le schéma suivant (toutes les classes de complexité n'y figurent pas, on choisit les prinncipales): 
-<img src="classes_de_complexite.png" alt="alt text"> 
+Nous l'avons vu, un algorithme efficace se résout en temps polynomial. Mais il existe d'autres ordres de grandeurs qu'on appelle alors classes de complexité en temps (il en existe aussi pour la mémoire). Elles peuvent être regroupées dans le schéma suivant (toutes les classes de complexité n'y figurent pas, on choisit les principales): 
+
+<img src="classes_de_complexite.png" alt="alt text" width="400" height="400"> 
+
+On dit qu'un problème est dans **P** s'il peut donc être résolu efficacement en temps polynomial **par une machine déterministe**. Un problème est dans **NP** si sa solution est difficile à trouver mais facile à vérifier **par une machine non déterministe**. C'est par exemple le cas du Sudoku: trouver la solution poour une case peut-être très difficile mais la vérifier prend très peu de temps (en *O(n²)*). 
+C'est pourquoi la question **P = NP** revient à se demander si tous les problèmes dont la solution peut être vérifiée en temps polynomial (NP) peuvent-ils aussi être résolus en temps polynomial (P). Autrement dit, est-ce qu'il existe un algorithme pour lequel il est aussi facile de trouver la solution que de la vérifier. 
+Si P=NP cela signifierait également par extension que toute Machine de Turing non déterministe pourrait être simulée efficacement par une Machine de Turing Déterministe en ce qui concerne les algorithmes résolus en temps polynomial. 
+
+Enfin, les deux dernières classes de complexités concernent les algorithmes inefficaces vus dans le tableau précédent, ceux résolus en temps exponentiel. 
 
 ## Bibliographie : 
 
