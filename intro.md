@@ -6,6 +6,7 @@
 ## Introduction à la théorie de la complexité
 
 **P = NP** ?
+
 En informatique théorique, la question 𝑃=𝑁𝑃 demande si tous les problèmes dont la solution peut être vérifiée rapidement (classe NP) peuvent aussi être résolus rapidement (classe P). Autrement dit, trouver la solution est-il aussi rapide que vérifier une solution déjà donnée ?
 Bien que cette question encore non résolue puisse sembler simple au premier coup d'oeil pour un esprit qui ne serait pas familier à l'algorithmique, elle est en fait le premier des "problèmes du millénaire", l'un des sept problèmes mathématiques dits insurmontables et posés en 2000 par l'Institut de mathématiques Clay aux Etats-Unis. Malgré un titre à l'air de défi impossible et une récompense d'un million de dollar fournie par l'Institut pour quiconque résolverait un de ces dits problèmes, le mathématicien britannique Keith Devlin considère le problème **P = NP** ? comme le seul problème compréhensible par tous. Loin d'avoir la prétention de pouvoir faire gagner la récompense suite à le lecture de cet article, ce dernier permettra de mieux aborder la question plus globale de la complexité des algorithmes afin de compendre notamment pourquoi **P = NP?** sera certainement encore un problème du prochain millénaire.
 
@@ -108,8 +109,6 @@ Ici un seul chemin est possible: si la machine lit a, elle passe à q1, si elle 
 
 Ici, en lisant a, la machine peut passer soit à q1 soit à q2, elle teste plusieurs chemins en même temps. 
 
-
-
 ## Algorithmes efficaces, algorithme inefficaces
 
 La première référence à l'efficacité des algorithmes remonte à 1956 lorsque le mathématicien autrichien Kurt Gödel écrit à son homologue hongrois von Neumann pour lui demander s'il existe un algorithme quadratique, c'est-à-dire un algorithme dont le nombre d’opérations est proportionnel à *n*² où *n* est la taille des données d'entrée, pour le problème SAT (Satisfiabilité Booléenne) qui consiste à déterminer si une formule booléenne peut être évaluée à vrai en attribuant des valeurs de vérité (true/false) aux variables [^3]. 
@@ -118,7 +117,7 @@ Par la suite, c'est la définition de Cobham [^4] ainsi que celle d'Edmonds [^5]
 - *n* est la taille de l'entrée
 - *k* est une constante
 
-Ainsi, un algorithme est dit efficace si le nombre d'opération effectué est de la forme de la fonction présentée ci-dessus. Afin de mieux comprendre, nous pouvons considérer le tableau suivant qui présente le temps nécessaire à l'exécution de plusieurs algorithmes en fonction des données en entrée :
+Ainsi, un algorithme est dit efficace si le nombre d'opération effectué est de la forme de la fonction présentée ci-dessus, on dit alors qu'il est **dans P** (pour polynomial). Afin de mieux comprendre, nous pouvons considérer le tableau suivant qui présente le temps nécessaire à l'exécution de plusieurs algorithmes en fonction des données en entrée :
 |            | Nom courant  | Temps pour *n* = 10⁶             | Remarques |
 |:------------:|:--------------:|:-------------------------------------:|:-----------:|
 |*O*(1)      |Temps constant| 1 ns                                | Le temps d'exécution ne dépend pas des données traitées.|
@@ -132,8 +131,10 @@ Table - *Ordre de grandeur des temps d'exécution d'un problème de taille 10⁶
 
 On comprend donc grâce au tableau qu'un algorithme efficace ne peut être que de la forme polynômiale (au maximum avec n⁴) pour pouvoir être exécutable. On précise toutefois que le temps nécessaire calculé ici ne prend pas en compte les performances techniques de la machine car on reste sur le même ordre de grandeur. 
 
+## Classes de complexité
 
-
+Nous l'avons vu, un algorithme efficace se résout en temps polynomial. Mais il existe d'autres ordres de grandeurs qu'on appelle alors classes de complexité en temps (il en existe aussi pour la mémoire). Elles peuvent être regroupées dans le schéma suivant (toutes les classes de complexité n'y figurent pas, on choisit les prinncipales): 
+<img src="classes_de_complexite.png" alt="alt text"> 
 
 ## Bibliographie : 
 
