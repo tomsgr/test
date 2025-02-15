@@ -77,7 +77,7 @@ Bien qu'il existe plusieurs méthodes de calcul, nous nous basons ici sur celui 
 
 - un ruban infini (mémoire de la machine)
 - une tête de lecture et d'écriture (qui lit et écrit sur le ruban)
-- un tableau de règles
+- un tableau de règles autrement appelé partie de contrôle
 
 Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici nous prendrons pour exemple les symboles 0, 1 ou un espace symbolisé par "_". La tête de lecture et d'écriture se déplace de case en case et peut lire les symboles associés ainsi qu'écrire un nouveau symbole. Elle possède également un état qui peut changer en fonction du tableau de règles. C'est ce tableau qui indique à la machine son état actuel, quel symbole est lu, quel symbole écrire ensuite, où se déplacer et quel état adopter. On peut modéliser cela par un exemple dans le tableau suivant: 
 
@@ -90,11 +90,17 @@ Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici n
 
 Ici, si on soumet à la machine le ruban 1 1 1 _ _ _ _, le ruban en sorti sera 0 0 0 _.
 
-Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). C'est donc cette mesure de complexité temporelle que nous utilisons dans l'exemple de la section précédente (code Python).
+Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). C'est donc cette mesure de complexité temporelle que nous utilisons dans l'exemple de la section précédente (code Python). Ici nous nous sommes intéressés à une machine à bande unique mais il est bien sûr possible d'en considérer avec plusieurs bandes, ou même avec une bande unique dite bifinie (innfinie à droite et à gauche). 
 
 <img src="machine_de_turing.jpg" alt="alt text"> 
 
 *Exemple de machine de Turing, source: Alan Turing et le décryptage des codes secrets nazis, CNRS Le Journal*
+
+## Machines déterministes, machines non déterministes
+
+L'exemple précédent concernant la Machine de Turing était celui d'une machine dite déterministe, c'est-à-dire d'une machine où pour chaque état et chaque entrée, il existe une seule transition possible. Dit plus simplement, cela signifie que si nous donnons la même entrée à la machine plusieurs fois, elle produira toujours le même résultat. 
+Pour les machines non-déterministes, à un état donné, plusieurs transitions sont possibles pour la même entrée. Afin de mieux comprendre on peut regarder les deux schémas suivants: 
+
 
 ## Algorithmes efficaces, algorithme inefficaces
 
