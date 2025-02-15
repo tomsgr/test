@@ -100,6 +100,8 @@ Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'�
 
 L'exemple précédent concernant la Machine de Turing était celui d'une machine dite déterministe, c'est-à-dire d'une machine où pour chaque état et chaque entrée, il existe une seule transition possible. Dit plus simplement, cela signifie que si nous donnons la même entrée à la machine plusieurs fois, elle produira toujours le même résultat. 
 Pour les machines non-déterministes, à un état donné, plusieurs transitions sont possibles pour la même entrée. Afin de mieux comprendre on peut regarder les deux schémas suivants: 
+<img src="automate_deterministe.png" alt="alt text"> 
+<img src="automate_non_deterministe.png" alt="alt text"> 
 
 
 ## Algorithmes efficaces, algorithme inefficaces
