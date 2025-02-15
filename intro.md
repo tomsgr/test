@@ -140,8 +140,9 @@ Nous l'avons vu, un algorithme efficace se résout en temps polynomial. Mais il 
 On dit qu'un problème est dans **P** s'il peut donc être résolu efficacement en temps polynomial **par une machine déterministe**. Un problème est dans **NP** si sa solution est difficile à trouver mais facile à vérifier **par une machine non déterministe**. C'est par exemple le cas du Sudoku: trouver la solution pour une case peut-être très difficile mais la vérifier prend très peu de temps (en *O(n²)*). 
 C'est pourquoi la question **P = NP** revient à se demander si tous les problèmes dont la solution peut être vérifiée en temps polynomial (NP) peuvent-ils aussi être résolus en temps polynomial (P). Autrement dit, est-ce qu'il existe un algorithme pour lequel il est aussi facile de trouver la solution que de la vérifier. 
 Si P=NP cela signifierait également par extension que toute Machine de Turing non déterministe pourrait être simulée efficacement par une Machine de Turing déterministe en ce qui concerne les algorithmes résolus en temps polynomial. 
+Enfin, les deux dernières classes de complexités concernent les algorithmes inefficaces vus dans le tableau précédent, ceux résolus en temps exponentiel (*O(2<sup>n</sup>)*). Contrairement à NP, où une solution peut être vérifiée rapidement, la classe EXPTIME contient des problèmes tellement complexes que même leur vérification nécessite un temps exponentiel. Par exemple, certains jeux à deux joueurs, comme le jeu de Hex [^6], appartiennent à EXPTIME car leur analyse complète demande d’explorer un très grand nombre de configurations possibles.
 
-Enfin, les deux dernières classes de complexités concernent les algorithmes inefficaces vus dans le tableau précédent, ceux résolus en temps exponentiel (*O(2<sup>n</sup>)*). 
+Alors **P=NP** reste pour l'instant le problème du millénaire. Si ce dernier venaità être résolu, l'impact dans nombre de domaines serait énorme. Par exemple, les avancées en cryptographies seraient telles que les systèmes de sécurité actuels deviendraient obsolètes puisque ces derniers reposent sur la difficulté à facotriser un grand nombre en produits de facteurs premiers. 
 
 ## Bibliographie : 
 
@@ -167,3 +168,5 @@ Complexity Zoo: https://complexityzoo.net/
 [^4]: Alan Cobham. « The Intrinsic Computational Difficulty of Functions ». In: *Logic, Methodology and Philosophy of Science, proceedings of the second International Congress, held in Jerusalem*, 1964.
 
 [^5]: Jack Edmonds. « Paths, Trees, and Flowers ». In:  *Canad. J. Math* 17 (1965),p. 449–467
+
+[^6]: L'article Wikipédia sur le jeu de Hex, fournit les informations nécessaires à sa compréhension https://fr.wikipedia.org/wiki/Hex
