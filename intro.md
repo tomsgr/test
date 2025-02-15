@@ -141,7 +141,7 @@ On dit qu'un problème est dans **P** s'il peut donc être résolu efficacement 
 C'est pourquoi la question **P = NP** revient à se demander si tous les problèmes dont la solution peut être vérifiée en temps polynomial (NP) peuvent-ils aussi être résolus en temps polynomial (P). Autrement dit, est-ce qu'il existe un algorithme pour lequel il est aussi facile de trouver la solution que de la vérifier. 
 Si P=NP cela signifierait également par extension que toute Machine de Turing non déterministe pourrait être simulée efficacement par une Machine de Turing Déterministe en ce qui concerne les algorithmes résolus en temps polynomial. 
 
-Enfin, les deux dernières classes de complexités concernent les algorithmes inefficaces vus dans le tableau précédent, ceux résolus en temps exponentiel. 
+Enfin, les deux dernières classes de complexités concernent les algorithmes inefficaces vus dans le tableau précédent, ceux résolus en temps exponentiel (*O(2<sup>n</sup>)*). 
 
 ## Bibliographie : 
 
