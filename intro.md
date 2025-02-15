@@ -91,7 +91,7 @@ Le ruban est divisé en plusieurs cases qui contiennent toutes un symbole, ici n
 
 Ici, si on soumet à la machine le ruban 1 1 1 _ _ _ _, le ruban en sorti sera 0 0 0 _.
 
-Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). C'est donc cette mesure de complexité temporelle que nous utilisons dans l'exemple de la section précédente (code Python). Ici nous nous sommes intéressés à une machine à bande unique mais il est bien sûr possible d'en considérer avec plusieurs bandes, ou même avec une bande unique dite bifinie (innfinie à droite et à gauche). 
+Pour la machine de Turing, on mesure la complexité temporelle par le nombre d'étapes élémentaires de calcul et la complexité spatiale par le nombre de cases du ruban qui sont utilisées durant le calcul (par analogie, on parlerait en unité de mémoire pour un ordinateur). C'est donc cette mesure de complexité temporelle que nous utilisons dans l'exemple de la section précédente (code Python). Ici nous nous sommes intéressés à une machine à bande unique mais il est bien sûr possible d'en considérer avec plusieurs bandes, ou même avec une bande unique dite bifinie (infinie à droite et à gauche). 
 
 <img src="machine_de_turing.jpg" alt="alt text"> 
 
@@ -137,9 +137,9 @@ Nous l'avons vu, un algorithme efficace se résout en temps polynomial. Mais il 
 
 <img src="classes_de_complexite.png" alt="alt text" width="400" height="400"> 
 
-On dit qu'un problème est dans **P** s'il peut donc être résolu efficacement en temps polynomial **par une machine déterministe**. Un problème est dans **NP** si sa solution est difficile à trouver mais facile à vérifier **par une machine non déterministe**. C'est par exemple le cas du Sudoku: trouver la solution poour une case peut-être très difficile mais la vérifier prend très peu de temps (en *O(n²)*). 
+On dit qu'un problème est dans **P** s'il peut donc être résolu efficacement en temps polynomial **par une machine déterministe**. Un problème est dans **NP** si sa solution est difficile à trouver mais facile à vérifier **par une machine non déterministe**. C'est par exemple le cas du Sudoku: trouver la solution pour une case peut-être très difficile mais la vérifier prend très peu de temps (en *O(n²)*). 
 C'est pourquoi la question **P = NP** revient à se demander si tous les problèmes dont la solution peut être vérifiée en temps polynomial (NP) peuvent-ils aussi être résolus en temps polynomial (P). Autrement dit, est-ce qu'il existe un algorithme pour lequel il est aussi facile de trouver la solution que de la vérifier. 
-Si P=NP cela signifierait également par extension que toute Machine de Turing non déterministe pourrait être simulée efficacement par une Machine de Turing Déterministe en ce qui concerne les algorithmes résolus en temps polynomial. 
+Si P=NP cela signifierait également par extension que toute Machine de Turing non déterministe pourrait être simulée efficacement par une Machine de Turing déterministe en ce qui concerne les algorithmes résolus en temps polynomial. 
 
 Enfin, les deux dernières classes de complexités concernent les algorithmes inefficaces vus dans le tableau précédent, ceux résolus en temps exponentiel (*O(2<sup>n</sup>)*). 
 
